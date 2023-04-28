@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DDoS-Guard</title>
+  <link href="{% static 'css/home.css' %}" rel="stylesheet">
+
+<body>
+
+</body>
+
+</html>
+<header style="background-image: URL(https://w-dog.ru/wallpapers/2/18/349624484023718/planeta-zemlya-pn.jpg);">
+
+  <div class="header">
+    <a href="#" class="logo"><img src="https://www.isplicense.ru/netcat_files/1092/4834/06.png" alt=""></a>
+    <div class="header-right">
+
+
+      <!--<div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+        </form>
+      </div>-->
+
+
+      <a title="+7(800)551-75-80" href="tel:+7(800)551-75-80"><strong>+7 (495) 215-03-87</strong></a>
+      <a title="info@fastreport.ru" href="mailto:info@fastreport.ru"><strong>info@ddos-guard.net</strong></a>
+      {% if request.user.is_authenticated %}
+      <a title="appeal" href="#"><strong>Мои заявкии</strong></a>
+
+      {% else %}
+        <a href="Vhod_front/Vhod.html">Войти</a>
+      <a href="Registration_front/Rega.html" class="book-button">Регистрация</a>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+  <div class="container">  
+<!--    <form id="contact" action="" method="post">-->
+<!--      <h3>Быстрое обращение</h3>-->
+<!--      <h4>Получите ответ за 3 часа!</h4>-->
+<!--      <fieldset>-->
+<!--        <input placeholder="Ваше имя" type="text" tabindex="1" required autofocus>-->
+<!--      </fieldset>-->
+<!--      <fieldset>-->
+<!--        <input placeholder="Ваш email" type="email" tabindex="2" required>-->
+<!--      </fieldset>-->
+<!--      <fieldset>-->
+<!--        <input placeholder="Ваш новый телефон" type="tel" tabindex="3" required>-->
+<!--      </fieldset>-->
+<!--      <fieldset>-->
+<!--        <input placeholder="Предмет обращения (тема)" type="url" tabindex="4" required>-->
+<!--      </fieldset>-->
+<!--      <fieldset>-->
+<!--        <textarea placeholder="Текст обращения" tabindex="5" required></textarea>-->
+<!--      </fieldset>-->
+<!--      <fieldset>-->
+<!--        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Отправить</button>-->
+<!--      </fieldset>-->
+<!--    </form>-->
+  {% block main %} {% endblock %}
+  </div>
+
+</header>
+
+
+
+<footer class="footer">
+  <div class="footer__addr">
+    <h1 class="footer__logo">Доп инф</h1>
+
+    <h2>Контакты</h2>
+
+    <address>
+      <br>
+
+      <a class="footer__btn" href="mailto:example@gmail.com">Email</a>
+    </address>
+  </div>
+
+  <ul class="footer__nav">
+    <li class="nav__item">
+      <h2 class="nav__title">Защита</h2>
+
+      <ul class="nav__ul">
+        <li>
+          <a href="#">Онлайн защита</a>
+        </li>
+
+        <li>
+          <a href="#">Атака</a>
+        </li>
+
+        <li>
+          <a href="#">Ддудоос </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav__item nav__item--extra">
+      <h2 class="nav__title">Обереги компанию</h2>
+
+      <ul class="nav__ul nav__ul--extra">
+        <li>
+          <a href="#">Безопасность-всегда</a>
+        </li>
+
+        <li>
+          <a href="#">Современная система защиты</a>
+        </li>
+
+        <li>
+          <a href="#">Защита всего и дом и квартиры</a>
+        </li>
+
+        <li>
+          <a href="#">Детей тоже защитим</a>
+        </li>
+
+        <li>
+          <a href="#">Тебя тоже защитим</a>
+        </li>
+
+        <li>
+          <a href="#">IoT</a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav__item">
+      <h2 class="nav__title">Мир защитим</h2>
+
+      <ul class="nav__ul">
+        <li>
+          <a href="#">Хакатон защитим</a>
+        </li>
+
+        <li>
+          <a href="#">Ринх защитим</a>
+        </li>
+
+        <li>
+          <a href="#">Туда сюда тоже защита</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="legal">
+    <p>&copy; 2011-2023 DDoS-Guard. Все права защищены</p>
+
+  </div>
+</footer>
