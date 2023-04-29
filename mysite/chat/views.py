@@ -76,12 +76,16 @@ def create_appeal(request):
         form = AppealForm()
     return render(request, 'chat/create.html', {'form': form})
 
+# def user_appeals(request):
+#     user_appeals_form = UserAppealsForm(user=request.user)
+#     if request.method == 'POST':
+#         user_appeals_form = UserAppealsForm(request.POST, user=request.user)
+#         if user_appeals_form.is_valid():
+#             selected_appeals = user_appeals_form.cleaned_data['appeals']
+#             # do something with selected appeals
+#             return redirect('home')
+#     return render(request, 'chat/user_appeals.html', {'user_appeals_form': user_appeals_form})
+
 def user_appeals(request):
-    user_appeals_form = UserAppealsForm(user=request.user)
-    if request.method == 'POST':
-        user_appeals_form = UserAppealsForm(request.POST, user=request.user)
-        if user_appeals_form.is_valid():
-            selected_appeals = user_appeals_form.cleaned_data['appeals']
-            # do something with selected appeals
-            return redirect('home')
-    return render(request, 'chat/user_appeals.html', {'user_appeals_form': user_appeals_form})
+    appeals = Appeal.objects.all()
+    return render(request, 'chat/user_appeals.html', {'appeals': appeals})

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Мои обращения</title>
+  <link href="{% static 'css/home.css' %}" rel="stylesheet">
 </head>
 <body>
-    {{user_appeals_form.as_p}}
+    {% for appeal in appeals %}
+    <a href="{% url 'room' appeal_id=appeal.id%}">{{ appeal.title }}</a>
+    <br>
+    {% endfor %}
 </body>
 </html>

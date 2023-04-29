@@ -9,5 +9,5 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('create_of_appeal/', views.create_appeal, name='create'),
     path('deactivate_appeal/<int:appeal_id>', views.deactivate_appeal, name='deactivate'),
-    path('user_appeals/', views.user_appeals, name='my_appeal')
+    path('user_appeals/', views.user_appeals, name='my_appeal'),
 ]
