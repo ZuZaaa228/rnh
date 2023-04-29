@@ -1,6 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.db import models
 
+
 class MyUserManager(BaseUserManager):
     def create_user(self, email, password=None):
         if not email:
@@ -71,8 +72,9 @@ class Appeal(models.Model):
         default='ни'
     )
     text_appeal = models.TextField()
-    author = models.OneToOneField(MyUser, on_delete=models.CASCADE,
-                                  verbose_name='Клиент')
+    author = models.ForeignKey(MyUser, on_delete=models.CASCADE,
+                                  verbose_name='Клиент',
+                                  unique=False,)
     is_activate = models.BooleanField(verbose_name='Активно ли обращение',
                                       default=True)
 

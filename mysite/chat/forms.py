@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
-from .models import MyUser
+from .models import MyUser, Appeal
 
 
 # class LoginForm(AuthenticationForm):
@@ -57,3 +57,29 @@ class RegistrationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class AppealForm(forms.ModelForm):
+    class Meta:
+        model = Appeal
+        fields = ('title', 'priority', 'text_appeal')
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'text_appeal': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+        labels = {
+            'title': 'Название обращения',
+            'text_appeal': 'Текст обращения',
+            'priority': 'Приоритет обращения',
+        }
+
+        CHOICES = (
+            ('св', 'Самый высокий'),
+            ('вы', 'Высокий'),
+            ('ср', 'Средний'),
+            ('ни', 'Низкий'),
+        )
+
+        priority = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=CHOICES)

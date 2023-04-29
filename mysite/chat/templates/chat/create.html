@@ -1,0 +1,24 @@
+{% extends "chat/home.html" %}
+
+{% block main %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+            {{ form.title }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.priority.id_for_label }}">{{ form.priority.label }}</label>
+            {{ form.priority }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.text_appeal.id_for_label }}">{{ form.text_appeal.label }}</label>
+            {{ form.text_appeal }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+{% endblock %}

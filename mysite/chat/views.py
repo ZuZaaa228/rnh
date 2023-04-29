@@ -48,3 +48,15 @@ def register_view(request):
         'form': form
     }
     return render(request, 'chat/register.html', context=context)
+
+def create_appeal(request):
+    if request.method == 'POST':
+        form = AppealForm(request.POST)
+        if form.is_valid():
+            appeal = form.save(commit=False)
+            appeal.author = request.user
+            appeal.save()
+            return redirect('home')
+    else:
+        form = AppealForm()
+    return render(request, 'chat/create.html', {'form': form})
