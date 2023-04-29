@@ -1,6 +1,7 @@
 {% extends "chat/home.html" %}
-
+{% load static %}
 {% block main %}
+<!--<link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" media="screen">-->
     <form method="post">
     {% csrf_token %}
     {{form.as_p}}

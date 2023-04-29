@@ -78,9 +78,15 @@ class Appeal(models.Model):
     is_activate = models.BooleanField(verbose_name='Активно ли обращение',
                                       default=True)
 
+    def __str__(self):
+        return f'{self.title}'
+
 class Message(models.Model):
-    appeal = models.OneToOneField(Appeal, on_delete=models.CASCADE)
-    sender = models.OneToOneField(MyUser, on_delete=models.CASCADE)
+    appeal = models.ForeignKey(Appeal, on_delete=models.CASCADE)
+    sender = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     text = models.TextField()
     time = models.DateTimeField(editable=False,
                                 auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.appeal}'
