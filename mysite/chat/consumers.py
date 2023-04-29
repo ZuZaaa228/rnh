@@ -67,11 +67,14 @@ class ChatConsumer(WebsocketConsumer):
     def chat_message(self, event):
         message = event["message"]
         sender = event["sender"]
+        # time = datetime.now().strftime('%H:%M:%S')
         time = datetime.now().strftime('%H:%M:%S')
+        is_admin = event.get("is_admin", MyUser.objects.get(email=sender).is_admin)
 
         # Send message to WebSocket
         self.send(text_data=json.dumps({
             "message": message,
             "sender": sender,
             "time": time,
+            "is_admin": is_admin,
         }))

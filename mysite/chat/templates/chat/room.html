@@ -39,7 +39,6 @@
     {{ appeal_id|json_script:"appeal-id" }}
     <script>
         const roomName = JSON.parse(document.getElementById('appeal-id').textContent);
-
         const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
@@ -47,15 +46,16 @@
             + roomName
             + '/'
         );
-
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-                document.querySelector('#chat-log').innerHTML += `<tr>
-                                                                <td>${data.sender}</td>
-                                                                <td><p>${data.message}</p></td>
-                                                                <td><p>${data.time}</p></td>
-
-                                                            </tr>`
+            console.log(data.is_admin );
+                    document.querySelector('#chat-log').innerHTML += `
+          <div>
+              <p>${ data.sender }${ data.is_admin ? " (админ)" : "" }:</p>
+              <p>${ data.message }</p>
+              <p>${ data.time }</p>
+              <br>
+          </div>                    `
         };
 
         chatSocket.onclose = function(e) {

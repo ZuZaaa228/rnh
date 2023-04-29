@@ -12,19 +12,22 @@ def index(request):
 
 # @login_required
 def appeal_chat(request, appeal_id):
-    appeal = Appeal.objects.get(id=appeal_id)
-    messages = Message.objects.filter(appeal=appeal).order_by('time')
-    print(appeal_id)
-    if request.user.is_admin or request.user == appeal.author:
-        return render(request, "chat/room.html", {"appeal_id": appeal_id,
-                                                  'appeal': appeal,
-                                                  'messages': messages})
-    else:
-        return redirect('home')
+    try:
+        appeal = Appeal.objects.get(id=appeal_id)
+        messages = Message.objects.filter(appeal=appeal).order_by('time')
+        print(appeal_id)
+        if request.user.is_admin or request.user == appeal.author:
+            return render(request, "chat/room.html", {"appeal_id": appeal_id,
+                                                      'appeal': appeal,
+                                                      'messages': messages})
+        else:
+            return redirect('home')
+    except AttributeError:
+        pass
 
 def deactivate_appeal(request, appeal_id):
     appeal = Appeal.objects.get(id=appeal_id)
-    form = AppealForm(request.POST, instance=appeal)
+    form = AppealFormDeactive(request.POST, instance=appeal)
     form.save()
     return redirect('room', appeal_id=appeal.id)
 

@@ -84,7 +84,7 @@ class AppealForm(forms.ModelForm):
 
         priority = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=CHOICES)
 
-class AppealForm(forms.ModelForm):
+class AppealFormDeactive(forms.ModelForm):
     class Meta:
         model = Appeal
         fields = ['is_activate']
@@ -100,7 +100,7 @@ class UserAppealsForm(forms.Form):
                 label='Обращения'
         )
 
-class AppealForm(forms.ModelForm):
+class AppealFormUser(forms.ModelForm):
     class Meta:
         model = Appeal
         fields = ['title', 'priority', 'text_appeal']
